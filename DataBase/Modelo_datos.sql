@@ -1,4 +1,14 @@
 -- =========================================================
+-- BASE DE DATOS: tienda_db
+-- Script MySQL 8+
+-- =========================================================
+
+CREATE DATABASE IF NOT EXISTS tienda_db
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE tienda_db;
+-- =========================================================
 -- TABLA: categorias
 -- =========================================================
 use tienda_db;
