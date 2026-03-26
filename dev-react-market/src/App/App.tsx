@@ -7,7 +7,7 @@ import AppLayout from "../layout/AppLayout";
 
 function app() {
   return (
-    <div className="container-fluid" style={{ border: "2px solid red" }}>
+    <div className="container-fluid">
       <AppLayout />
       {/* 
         <SearchBar

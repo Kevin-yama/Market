@@ -19,9 +19,9 @@ const handleCloseOffcanvas = (): void => {
 };
 */
 
-const Sidebar = () => {
+const Sidebar = (props: { className?: string }) => {
   return (
-    <div>
+    <div className={props.className}>
       <button
         className="btn btn-dark"
         type="button"
