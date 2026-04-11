@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar";
 import ButtonAdd from "../components/ButtonAdd";
 import ProductList from "../components/ProductList";
 import PaymentPanel from "../components/PaymentPanel";
+import CustomButton from "../components/CustomButton";
 
 function AppLayout() {
   const [search, setSearch] = useState("");
@@ -19,11 +20,24 @@ function AppLayout() {
           onChange={setSearch}
           placeholder="Buscar categoría"
         />
-        <ButtonAdd />
+        <CustomButton
+          text="Agregar"
+          icon="bi-plus-circle"
+          column={3}
+          position="end"
+        />
       </div>
       <div className="col-md-11">
         <ProductList />
       </div>
+      <CustomButton
+        text="Listar ventas"
+        icon="bi-receipt"
+        variant="outline-secondary"
+        column={2}
+        position="start"
+      />
+
       {/* PANEL DE PAGO */}
       <div className="col-md-11 d-flex justify-content-end">
         <div style={{ width: "100%", maxWidth: "350px" }}>
