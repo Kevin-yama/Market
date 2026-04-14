@@ -1,27 +1,48 @@
-/*
-const handleCloseOffcanvas = (): void => {
-  const offcanvasElement = document.getElementById("sidebarMenu");
+export type SidebarSection =
+  | "dashboard"
+  | "categorias"
+  | "productos"
+  | "clientes"
+  | "compras"
+  | "ventas";
 
-  if (!offcanvasElement) return;
+interface SidebarProps {
+  className?: string;
+  activeSection: SidebarSection;
+  onSelect: (section: SidebarSection) => void;
+}
 
-  const bootstrapWindow = window as typeof window & {
-    bootstrap?: {
-      Offcanvas: {
-        getOrCreateInstance: (element: Element) => { hide: () => void };
+const Sidebar = ({ className, activeSection, onSelect }: SidebarProps) => {
+  const handleCloseOffcanvas = (): void => {
+    const offcanvasElement = document.getElementById(
+      "offcanvasWithBothOptions",
+    );
+
+    if (!offcanvasElement) return;
+
+    const bootstrapWindow = window as typeof window & {
+      bootstrap?: {
+        Offcanvas: {
+          getOrCreateInstance: (element: Element) => { hide: () => void };
+        };
       };
     };
+
+    const offcanvasInstance =
+      bootstrapWindow.bootstrap?.Offcanvas.getOrCreateInstance(
+        offcanvasElement,
+      );
+
+    offcanvasInstance?.hide();
   };
 
-  const offcanvasInstance =
-    bootstrapWindow.bootstrap?.Offcanvas.getOrCreateInstance(offcanvasElement);
+  const handleSelect = (section: SidebarSection) => {
+    onSelect(section);
+    handleCloseOffcanvas();
+  };
 
-  offcanvasInstance?.hide();
-};
-*/
-
-const Sidebar = (props: { className?: string }) => {
   return (
-    <div className={props.className}>
+    <div className={className}>
       <button
         className="btn btn-dark"
         type="button"
@@ -51,66 +72,85 @@ const Sidebar = (props: { className?: string }) => {
           />
         </div>
         <div className="offcanvas-body">
-          <SidenavBody />
+          <SidenavBody activeSection={activeSection} onSelect={handleSelect} />
         </div>
       </div>
     </div>
   );
 };
 
-function SidenavBody() {
-  const className =
-    "nav-link d-flex align-items-center gap-2 rounded px-3 py-2 text-dark";
-  const menuItems = [
+interface SidenavBodyProps {
+  activeSection: SidebarSection;
+  onSelect: (section: SidebarSection) => void;
+}
+
+function SidenavBody({ activeSection, onSelect }: SidenavBodyProps) {
+  const baseClassName =
+    "btn text-start d-flex align-items-center gap-2 rounded px-3 py-2 w-100 border-0";
+  const menuItems: {
+    id: number;
+    icono: string;
+    texto: string;
+    section: SidebarSection;
+  }[] = [
     {
       id: 0,
       icono: "🏠",
       texto: "Dashboard",
-      ruta: "/",
+      section: "dashboard",
     },
     {
       id: 1,
       icono: "📂",
       texto: "Categorías",
-      ruta: "/categorias",
+      section: "categorias",
     },
     {
       id: 2,
       icono: "📦",
       texto: "Productos",
-      ruta: "/productos",
+      section: "productos",
     },
     {
       id: 3,
       icono: "👥",
       texto: "Clientes",
-      ruta: "/clientes",
+      section: "clientes",
     },
     {
       id: 4,
       icono: "🛒",
       texto: "Compras",
-      ruta: "/compras",
+      section: "compras",
     },
     {
       id: 5,
       icono: "💰",
       texto: "Ventas",
-      ruta: "/ventas",
+      section: "ventas",
     },
   ];
 
   return (
-    <>
-      <nav className="nav flex-column gap-2">
-        {menuItems.map((item) => (
-          <a key={item.id} href={item.ruta} className={className}>
+    <nav className="nav flex-column gap-2">
+      {menuItems.map((item) => {
+        const isActive = activeSection === item.section;
+
+        return (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => onSelect(item.section)}
+            className={`${baseClassName} ${
+              isActive ? "bg-dark text-white" : "bg-light text-dark"
+            }`}
+          >
             <span>{item.icono}</span>
             <span>{item.texto}</span>
-          </a>
-        ))}
-      </nav>
-    </>
+          </button>
+        );
+      })}
+    </nav>
   );
 }
 
