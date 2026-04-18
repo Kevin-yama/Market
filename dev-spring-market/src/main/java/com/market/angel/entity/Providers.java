@@ -1,16 +1,14 @@
-package com.tienda.angel.entity;
-
+package com.market.angel.entity;
 import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "clientes")
-public class Clients {
+@Table(name = "proveedores")
+public class Providers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cliente_id")
+    @Column(name = "proveedor_id")
     private Integer id;
 
     @ManyToOne

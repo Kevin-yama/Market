@@ -1,18 +1,20 @@
-package com.tienda.angel.entity;
+package com.market.angel.entity;
 
 import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
+
 @Entity
-@Table(name = "roles")
-public class Roles {
+@Table(name = "tipos_documento")
+public class TypeDocuments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rol_id")
+    @Column(name = "tipo_documento_id")
     private Integer id;
 
+    private String codigo;
     private String nombre;
-    private String descripcion;
     private Boolean activo;
 
     private LocalDateTime fechaCreacion;

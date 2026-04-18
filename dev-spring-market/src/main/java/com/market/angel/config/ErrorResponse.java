@@ -1,4 +1,4 @@
-package com.tienda.angel.config;
+package com.market.angel.config;
 
 import java.time.LocalDateTime;
 

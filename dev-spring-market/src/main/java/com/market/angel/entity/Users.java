@@ -1,4 +1,4 @@
-package com.tienda.angel.entity;
+package com.market.angel.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

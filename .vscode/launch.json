@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Application",
+      "request": "launch",
+      "mainClass": "com.market.angel.Application",
+      "projectName": "angel"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-Application<angel>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.tienda.angel.Application",
+      "projectName": "angel",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

@@ -49,7 +49,7 @@ export async function getCategories(): Promise<Category[]> {
       "Content-Type": "application/json",
     },
   });
-
+  console.log("Response status:", response.status);
   return parseResponse<Category[]>(response);
 }
 
@@ -63,6 +63,6 @@ export async function createCategory(
     },
     body: JSON.stringify(payload),
   });
-
+  console.log("Response status:", response.status);
   return parseResponse<Category>(response);
 }

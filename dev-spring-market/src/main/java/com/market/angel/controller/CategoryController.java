@@ -1,10 +1,10 @@
-package com.tienda.angel.controller;
+package com.market.angel.controller;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-import com.tienda.angel.entity.Categories;
-import com.tienda.angel.repository.CategoryRepository;
+import com.market.angel.entity.Categories;
+import com.market.angel.repository.CategoryRepository;
 
 @RestController
 @RequestMapping("/categories")

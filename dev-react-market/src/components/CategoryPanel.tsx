@@ -234,6 +234,10 @@ function CategoryPanel({ search }: CategoryPanelProps) {
           <div className="card-body">
             {loading ? (
               <p className="mb-0">Cargando categorías...</p>
+            ) : error ? (
+              <div className="alert alert-danger mb-0" role="alert">
+                {error}
+              </div>
             ) : filteredCategories.length === 0 ? (
               <p className="mb-0">No hay categorías para mostrar.</p>
             ) : (

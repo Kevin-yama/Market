@@ -1,4 +1,4 @@
-package com.tienda.angel.config;
+package com.market.angel.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

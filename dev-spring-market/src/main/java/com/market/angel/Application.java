@@ -1,4 +1,4 @@
-package com.tienda.angel;
+package com.market.angel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

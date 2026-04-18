@@ -1,4 +1,4 @@
-package com.tienda.angel.controller;
+package com.market.angel.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,22 +1,25 @@
-package com.tienda.angel.entity;
+package com.market.angel.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "unidades_medida")
-public class UnitsMeasurements {
+@Table(name = "categorias")
+public class Categories {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "unidades_id")
-    private Integer unidadesId;
+    @Column(name = "categoria_id")
+    private Integer categoriaId;
 
-    @Column(name = "nombre", nullable = false, length = 50, unique = true)
+    @Column(name = "codigo", nullable = false, length = 20)
+    private String codigo;
+
+    @Column(name = "nombre", nullable = false, length = 100, unique = true)
     private String nombre;
 
-    @Column(name = "abreviatura", nullable = false, length = 20, unique = true)
-    private String abreviatura;
+    @Column(name = "descripcion", length = 255)
+    private String descripcion;
 
     @Column(name = "activo", nullable = false)
     private Boolean activo = true;
@@ -27,14 +30,14 @@ public class UnitsMeasurements {
     @Column(name = "fecha_actualizacion", nullable = false)
     private LocalDateTime fechaActualizacion;
 
-    // 🔄 Antes de insertar
+    // 🔄 Se ejecuta antes de guardar
     @PrePersist
     public void prePersist() {
         this.fechaCreacion = LocalDateTime.now();
         this.fechaActualizacion = LocalDateTime.now();
     }
 
-    // 🔄 Antes de actualizar
+    // 🔄 Se ejecuta antes de actualizar
     @PreUpdate
     public void preUpdate() {
         this.fechaActualizacion = LocalDateTime.now();
@@ -42,12 +45,20 @@ public class UnitsMeasurements {
 
     // Getters y Setters
 
-    public Integer getUnidadesId() {
-        return unidadesId;
+    public Integer getCategoriaId() {
+        return categoriaId;
     }
 
-    public void setUnidadesId(Integer unidadesId) {
-        this.unidadesId = unidadesId;
+    public void setCategoriaId(Integer categoriaId) {
+        this.categoriaId = categoriaId;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -58,12 +69,12 @@ public class UnitsMeasurements {
         this.nombre = nombre;
     }
 
-    public String getAbreviatura() {
-        return abreviatura;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setAbreviatura(String abreviatura) {
-        this.abreviatura = abreviatura;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Boolean getActivo() {
